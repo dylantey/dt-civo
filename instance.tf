@@ -23,6 +23,6 @@ data "civo_disk_image" "debian" {
 resource "civo_instance" "test" {
     tags = ["python", "nginx"]
     notes = "this is a note for the server"
-    size = "g3.small"
+    size = "g3.medium"
     disk_image = element(data.civo_disk_image.debian.diskimages, 0).id
 }
