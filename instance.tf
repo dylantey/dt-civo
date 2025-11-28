@@ -12,9 +12,17 @@ provider "civo" {
   token = var.civo_token
 }
 
+data "civo_firewall" "this" {
+    name = "default"
+}
+
 # Create a cluster
 resource "civo_kubernetes_cluster" "dt-cluster" {
     name = "dt-cluster"
-    num_target_nodes = 1
-    target_nodes_size = "g4s.kube.xsmall"
+    firewall_id = data.civo_firewall.this.id
+    pools {
+        size = "g4s.kube.xsmall"
+        node_count = 1
+    }
+    application = "kubefirst"
 }
