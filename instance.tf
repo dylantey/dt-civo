@@ -24,5 +24,5 @@ resource "civo_kubernetes_cluster" "dt-cluster" {
         size = "g4s.kube.xsmall"
         node_count = 1
     }
-    application = "kubefirst"
+    applications = "kubefirst"
 }
