@@ -1,1 +1,4 @@
-variable "civo_token" { type = string }
+variable "CIVO_TOKEN" {
+  type        = string
+  description = "Civo API token"
+}
