@@ -9,7 +9,6 @@ terraform {
 # Configure the Civo Provider
 provider "civo" {
   region = "NYC1"
-  token = var.civo_token
 }
 
 data "civo_firewall" "this" {
@@ -20,9 +19,10 @@ data "civo_firewall" "this" {
 resource "civo_kubernetes_cluster" "dt-cluster" {
     name = "dt-cluster"
     firewall_id = data.civo_firewall.this.id
+    kubernetes_version = "1.32.5-k3s1"
     pools {
         size = "g4s.kube.xsmall"
         node_count = 1
     }
-    applications = "kubefirst"
+    applications = "kubefirst,sonarqube,kubernetes-dashboard"
 }
