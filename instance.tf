@@ -11,6 +11,7 @@ provider "civo" {
   region = "NYC1"
 }
 
+# Retrieve the default firewall
 data "civo_firewall" "this" {
     name = "default"
 }
