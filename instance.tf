@@ -9,7 +9,6 @@ terraform {
 # Configure the Civo Provider
 provider "civo" {
   region = "NYC1"
-  token  = var.civo_token
 }
 
 data "civo_firewall" "this" {
